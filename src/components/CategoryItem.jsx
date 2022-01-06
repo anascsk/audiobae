@@ -41,7 +41,9 @@ cursor: pointer;
 font-weight: 600;
 margin-bottom: 20px;
 border-radius: 5px;
-
+&:hover{
+  color: #580b0b;
+}
 `
 
 const CategoryItem = ({ item }) => {
