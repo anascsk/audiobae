@@ -74,8 +74,16 @@ const Desc = styled.div`
 const Button = styled.button`
   padding: 10px;
   font-size: 20px;
-  background-color: #b0bee68d;
+  background-color: #90e0ef;
   cursor: pointer;
+  color: black;
+  font-weight: 600;
+  border-radius: 5px;
+  border: 2px solid #addfe9;
+  transition: transform .3s ;
+&:hover {
+  transform: scale(1.03);
+}
 `;
 
 const Slider = () => {
@@ -102,7 +110,7 @@ const Slider = () => {
             <InfoContainer>
               <Title>{item.title}</Title>
               <Desc>{item.desc}</Desc>
-              <Button>Show Now</Button>
+              <Button>GET NOW</Button>
             </InfoContainer>
           </Slide>
         ))}

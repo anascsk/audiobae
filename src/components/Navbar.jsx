@@ -13,18 +13,13 @@ import { Link } from "react-router-dom";
 
 const Container = styled.div`
   height: 90px;
-  background-color: #b0bee68d;
+  background-color: #90e0ef;
   ${mobile({ height: "50px" })}
 `;
 
-const Logo = styled.img`
-  border-radius: 15px 15px;
-  width: 170px;
-  height: 50px;
-  display: block;
-  justify-content: center;
-  align-items: center;
-  margin: 10px;
+const Logo = styled.h4`
+  font-size: 30px;
+  color: black;
 `;
 const Wrapper = styled.div`
   padding: 10px 20px;
@@ -61,10 +56,14 @@ const SearchContainer = styled.div`
   border: 1px solid #dfe2f5;
   display: flex;
   align-items: center;
-  margin-left: 25px;
+  margin-left: 45px;
+  margin-top: 10px;
   padding: 5px;
   border-radius: 5px;
-  margin-left: 20px;
+  &:focus{
+   
+  }
+
 `;
 
 const Input = styled.input`
@@ -72,6 +71,7 @@ const Input = styled.input`
   &:focus {
     outline: none;
   }
+  
   width: 600px;
   height: 33px;
   border-radius: 5px;
@@ -85,7 +85,7 @@ const MenuItem = styled.div`
   margin-left: 25px;
   font-size: 18px;
   font-weight: 600;
-  color: #4943a0;
+  color: #05679c;
   cursor: pointer;
   justify-content: space-between;
   ${mobile({ fontSize: "12px", marginLeft: "10px" })}
@@ -96,9 +96,9 @@ const Navbar = () => {
     <Container>
       <Wrapper>
         <Left>
-          <Link to={"/ecommerce-ui"}>
-            <Logo src={logo} alt="logo" />
-            {/* <img src={logo}  alt="logo"/> */}
+          <Link to={"/"}>
+            <Logo>audiobae</Logo>
+            
           </Link>
           <SearchContainer style={{ color: "gray", fontSize: 14 }}>
             <Input placeholder="Search for products, brands and more" />

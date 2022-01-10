@@ -25,7 +25,7 @@ display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: end;
-/* justify-content: center; */
+
 
 `
 const Title = styled.h1`
@@ -33,16 +33,18 @@ color: #070708;
 margin-bottom: 20px;
 `
 const Button = styled.button`
-border: none;
-padding: 12px;
-background-color: #c5c4d8;
-color: gray;
-cursor: pointer;
-font-weight: 600;
-margin-bottom: 20px;
-border-radius: 5px;
-&:hover{
-  color: #580b0b;
+ padding: 10px;
+  font-size: 20px;
+  background-color: #90e0ef;
+  cursor: pointer;
+  color: black;
+  font-weight: 600;
+  border-radius: 5px;
+  border: 2px solid #addfe9;
+  margin-bottom: 5px;
+  transition: transform .3s ;
+&:hover {
+  transform: scale(1.03);
 }
 `
 
