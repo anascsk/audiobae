@@ -33,15 +33,16 @@ color: #070708;
 margin-bottom: 20px;
 `
 const Button = styled.button`
- padding: 10px;
-  font-size: 20px;
+ padding: 30px;
+ width: 100%;
+  font-size: 3vw;
   background-color: #90e0ef;
   cursor: pointer;
-  color: black;
+  color: #12534a;
   font-weight: 600;
-  border-radius: 5px;
+  border-radius: 10px 10px 0px 0px ;
   border: 2px solid #addfe9;
-  margin-bottom: 5px;
+  
   transition: transform .3s ;
 &:hover {
   transform: scale(1.03);
@@ -53,8 +54,8 @@ const CategoryItem = ({ item }) => {
     <Container>
       <Image src={item.img}/>
       <Info>
-        <Title> {item.title}</Title>
-        <Button>SHOP NOW</Button>
+        
+        <Button>{item.title}</Button>
       </Info>
     </Container>
   );

@@ -15,6 +15,7 @@ const Container = styled.div`
   height: 90px;
   background-color: #90e0ef;
   ${mobile({ height: "50px" })}
+  max-width: 100vw;
 `;
 
 const Logo = styled.h4`
@@ -22,9 +23,10 @@ const Logo = styled.h4`
   color: black;
 `;
 const Wrapper = styled.div`
-  padding: 10px 20px;
+  padding: 10px 10px;
   display: flex;
   justify-content: space-between;
+  max-width: 100vw;
   ${mobile({ padding: "10px 0px" })}
 `;
 
@@ -42,6 +44,7 @@ const Right = styled.div`
   flex: 1;
   display: flex;
   align-items: center;
+  margin-right: 20px;
   justify-content: flex-end;
   text-decoration: none;
   ${mobile({ flex: 2, justifyContent: "center" })}
@@ -56,7 +59,7 @@ const SearchContainer = styled.div`
   border: 1px solid #dfe2f5;
   display: flex;
   align-items: center;
-  margin-left: 45px;
+  margin-left: 40px;
   margin-top: 10px;
   padding: 5px;
   border-radius: 5px;
@@ -72,7 +75,7 @@ const Input = styled.input`
     outline: none;
   }
   
-  width: 600px;
+  width: 500px;
   height: 33px;
   border-radius: 5px;
   font-size: 15px;

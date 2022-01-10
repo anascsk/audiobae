@@ -61,6 +61,7 @@ import {
   height: 40px;
   border-radius: 50%;
   background-color: white;
+  color: #12534a;
   display: flex;
   align-items: center;
   justify-content: center;

@@ -6,6 +6,7 @@ import Register from "./pages/Register";
 import Cart from "./pages/Cart";
 import { BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom";
 
+
 const App = () => {
   const user= ''
   return (

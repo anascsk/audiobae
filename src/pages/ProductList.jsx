@@ -1,11 +1,12 @@
+import {useState, useEffect} from 'react'
 import styled from "styled-components";
 import Navbar from "../components/Navbar";
-import Products from "../components/Products";
-import Newsletter from "../components/Newsletter";
 import Footer from "../components/Footer";
-
-import Announcement from "../components/Announcement";
 import { mobile } from "../responsive";
+import {commerce} from '../lib/commerce'
+
+
+
 
 const Container = styled.div``;
 const Title = styled.h1``;
@@ -16,7 +17,7 @@ justify-content: space-between;
 `;
 const Filter = styled.div`
 margin: 20px;
-${mobile({ width: "0px 20px", display: "flex", flecDirection: "column" })}
+${mobile({ width: "0px 20px", display: "flex", flexDirection: "column" })}
 `;
 const FilterText = styled.span`
 font-size: 20px;
@@ -36,48 +37,77 @@ ${mobile({ margin: "10px 0px" })}
 const Option = styled.option``
 
 const ProductList = () => {
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [products, setProducts] = useState([]);
+  const [cart, setCart] = useState({});
+  const [order, setOrder] = useState({});
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const fetchProducts = async () => {
+    const { data } = await commerce.products.list();
+
+    setProducts(data);
+  };
+
+  const fetchCart = async () => {
+    setCart(await commerce.cart.retrieve());
+  };
+
+  const handleAddToCart = async (productId, quantity) => {
+    const item = await commerce.cart.add(productId, quantity);
+
+    setCart(item.cart);
+  };
+
+  const handleUpdateCartQty = async (lineItemId, quantity) => {
+    const response = await commerce.cart.update(lineItemId, { quantity });
+
+    setCart(response.cart);
+  };
+
+  const handleRemoveFromCart = async (lineItemId) => {
+    const response = await commerce.cart.remove(lineItemId);
+
+    setCart(response.cart);
+  };
+
+  const handleEmptyCart = async () => {
+    const response = await commerce.cart.empty();
+
+    setCart(response.cart);
+  };
+
+  const refreshCart = async () => {
+    const newCart = await commerce.cart.refresh();
+
+    setCart(newCart);
+  };
+
+  const handleCaptureCheckout = async (checkoutTokenId, newOrder) => {
+    try {
+      const incomingOrder = await commerce.checkout.capture(checkoutTokenId, newOrder);
+
+      setOrder(incomingOrder);
+
+      refreshCart();
+    } catch (error) {
+      setErrorMessage(error.data.error.message);
+    }
+  };
+
+  useEffect(() => {
+    fetchProducts();
+    fetchCart();
+  }, []);
+
+  const handleDrawerToggle = () => setMobileOpen(!mobileOpen);
+
+{ console.log(products)}
+
   return (
     <Container>
       <Navbar />
-      <Announcement />
-      <Title>Dresses</Title>
-      <FilterContainer>
-        <Filter>
-            <FilterText>Filter Products:</FilterText>
-
-            <Select>
-                <Option disabled selected>
-                    Color
-                </Option>
-                <Option>White</Option>
-                <Option>Black</Option>
-                <Option>Red</Option>
-            </Select>
-            <Select>
-                <Option disabled selected>
-                    Size
-                </Option>
-                <Option>S</Option>
-                <Option>L</Option>
-                <Option>XL</Option>
-            </Select>
-            </Filter>
-            <Filter>
-            <FilterText>Sort Products:</FilterText>
-            
       
-        
-        <Select>
-                <Option disabled selected>
-                    Newest
-                </Option>
-                <Option>Price asc</Option>
-                <Option>Price desc</Option>
-            </Select>
-        </Filter>
-      </FilterContainer>
-      <Products/>
-      <Newsletter/>
       <Footer/>
     </Container>
   );

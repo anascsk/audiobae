@@ -31,12 +31,12 @@ export const sliderItems = [
     {
       id: 2,
       img: "https://cdn.vox-cdn.com/thumbor/FjIJOT6ulSBByoHYCrtrlwJD0U0=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/9146763/ath_ar5bt_lifestyle_4.jpg",
-      title: "Wireless Headset",
+      title: "Wireless Headsets ",
     },
     {
       id: 3,
       img: "https://i5.walmartimages.com/asr/c0811fc5-39b0-4370-af4d-3e1de1f855e9_1.9b55aab51ee1ef443c2a350c189961b0.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF",
-      title: "wired Headset",
+      title: "Wired Headsets",
     },
   ];
 
