@@ -6,10 +6,10 @@ const Container = styled.div`
   width: 100vw;
   height: 100vh;
   background: linear-gradient(
-      rgba(255, 255, 255, 0.5),
-      rgba(255, 255, 255, 0.5)
+      rgba(49, 47, 47, 0.5),
+      rgba(54, 49, 49, 0.5)
     ),
-    url("https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/10456354/2019/8/22/d56e75f6-f1a7-4fdd-b430-51befb36f88d1566454760527-Campus-Sutra-Men-Colourblocked-Casual-Spread-Shirt-290156645-1.jpg")
+    url("https://cdn.shopify.com/s/files/1/0153/8863/files/Headphone-Zone-Marshall-MonitorII-ANC-Drop-580-450-04_1024x1024.jpg?v=1630932128")
       no-repeat;
   background-size: cover;
   display: flex;
@@ -21,36 +21,49 @@ const Wrapper = styled.div`
   width: 40%;
 
   padding: 20px;
-  background-color: #ffffff22;
+  background-color: #ffffff1d;
   ${mobile({ width: "75%" })}
 `;
 const Title = styled.h1`
-  font-size: 24px;
+  font-size: 30px;
   font-weight: 300;
+  margin-bottom: 40px;
+  color: white;
 `;
 const Form = styled.form`
   display: flex;
   flex-wrap: wrap; 
+
 `;
 
 const Input = styled.input`
-  flex: 1;
+   flex: 1;
   min-width: 40%;
-  margin: 20px 10px 0px 0px;
-  padding: 10px;
+  margin: 10px 0px;
+  margin-left: 10px;
+  padding: 15px;
+  background-color: #e4e9ebef;
+  color: #000000;
+  border-radius: 10px;
   border: none;
+  &:focus{
+    border: none;
+  }
 `;
 const Agreement = styled.span`
   font-size: 12px;
   margin: 20px 0px;
+  color: white;
 `;
 const Button = styled.button`
   width: 40%;
   border: none;
   padding: 15px 20px;
-  background-color: teal;
-  color: white;
+  background-color: #90e0ef;
+  color: #000;
   cursor: pointer;
+  margin-bottom: 10px;
+  border-radius: 10px;
   
 `;
 
@@ -70,7 +83,7 @@ const Register = () => {
           <Input placeholder="password" />
           <Input placeholder="confirm password" />
           <Agreement>
-            By creating an account sdlj dsefgsdfgsfdgdfgsfdgsrgsfgsgffd  fgjh fgh esg<br /><b>PRIVACY AND POLICY</b>
+            By creating an account you are agreeing to our rules and regulations and <br /><b>PRIVACY AND POLICY</b>
           </Agreement>
           <Button>CREATE</Button>
         </Form>

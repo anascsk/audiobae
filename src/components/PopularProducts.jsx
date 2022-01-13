@@ -16,7 +16,7 @@ margin-top: 70px;
     font-size: 50px;
    margin-left: 20px;
 `
-const Products = () => {
+const PopularProducts = () => {
     return (
     <>
         <H1>Hot Selling Products</H1>
@@ -30,4 +30,4 @@ const Products = () => {
     )
 }
 
-export default Products
+export default PopularProducts

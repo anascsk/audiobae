@@ -2,7 +2,7 @@ export const sliderItems = [
     {
       id: 1,
       img: "https://cdn.shopify.com/s/files/1/0153/8863/products/V-moda-Crossfade-Codex-Rose-Gold-new-01_2000x.jpg?v=1599306531",
-      title: "SUMMER SALE",
+      title: "V-MODA CROSSFADE",
       desc: "DON'T COMPROMISE ON CLARITY! GET FLAT 30% OFF FOR NEW ARRIVALS.",
       bg: "fff",
     },

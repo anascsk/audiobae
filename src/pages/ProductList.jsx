@@ -2,8 +2,18 @@ import {useState, useEffect} from 'react'
 import styled from "styled-components";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import Products from '../components/Products'
+import Cart from './Cart';
+import Checkout from './Checkout';
 import { mobile } from "../responsive";
 import {commerce} from '../lib/commerce'
+
+import { CssBaseline } from '@material-ui/core';
+import { BrowserRouter as Router, Switch, Route,Redirect } from 'react-router-dom';
+import Home from './Home';
+import Login from './Login';
+import Register from './Register';
+
 
 
 
@@ -101,13 +111,40 @@ const ProductList = () => {
   }, []);
 
   const handleDrawerToggle = () => setMobileOpen(!mobileOpen);
+  const user= ''
 
-{ console.log(products)}
 
   return (
     <Container>
       <Navbar />
       
+      <div style={{ display: 'flex' }}>
+        <CssBaseline />
+        
+        <Switch>
+        <Route path="/" exact >
+        <Home />
+      </Route>
+      <Route path="/login" >
+        {user ? <Redirect to="/"/> :  <Login/> }
+      </Route>
+      <Route path="/register" >
+        <Register />
+      </Route>
+          <Route path="/products">
+            <Products products={products} onAddToCart={handleAddToCart} handleUpdateCartQty />
+            <Footer/>
+          </Route>
+          <Route exact path="/cart">
+            <Cart cart={cart} onUpdateCartQty={handleUpdateCartQty} onRemoveFromCart={handleRemoveFromCart} onEmptyCart={handleEmptyCart} />
+          </Route>
+          <Route path="/checkout">
+            <Checkout cart={cart} order={order} onCaptureCheckout={handleCaptureCheckout} error={errorMessage} />
+          </Route>
+        </Switch>
+      </div>
+    
+    
       <Footer/>
     </Container>
   );

@@ -5,8 +5,8 @@ import { sliderItems } from "../data";
 import { mobile } from "../responsive";
 
 const Container = styled.div`
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  max-height: 100vh;
   display: flex;
   position: relative;
   overflow-x: hidden;
@@ -16,7 +16,7 @@ const Container = styled.div`
 const Arrow = styled.div`
   width: 50px;
   height: 50px;
-  background-color: white;
+  background-color: #dfeff5;
   border-radius: 50px;
   display: flex;
   align-items: center;

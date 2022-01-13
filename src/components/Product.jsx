@@ -1,9 +1,9 @@
 import { Add, Remove } from "@material-ui/icons";
+import { Card, CardMedia, CardContent, CardActions, Typography, IconButton } from '@material-ui/core';
+import { AddShoppingCart } from '@material-ui/icons';
 import styled from "styled-components";
-import Announcement from "../components/Announcement";
-import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
-import Newsletter from "../components/Newsletter";
+import Footer from "./Footer";
+
 import { mobile } from "../responsive";
 
 const Container = styled.div``;
@@ -99,50 +99,49 @@ font-weight: 500;
    background-color: #f8f4f4;
  }
 `;
-const Product = () => {
+const Product = ({ product, onAddToCart }) => {
+  const handleAddToCart = () => onAddToCart(product.id, 1);
+
   return (
     <Container>
-      <Navbar />
-      <Announcement />
+     
+      <Card>
+      <CardMedia image={product.media.source} title={product.name} />
+      <CardContent>
+        <div >
+          <Typography gutterBottom variant="h5" component="h2">
+            {product.name}
+          </Typography>
+          <img src={product.media.source} alt='' width="200px" height="180px" />
+
+          <Typography gutterBottom variant="h5" component="h2">
+            {product.price.formatted_with_symbol}
+          </Typography>
+        </div>
+        <Typography dangerouslySetInnerHTML={{ __html: product.description }} variant="body2" color="textSecondary" component="p" />
+      </CardContent>
+      <CardActions disableSpacing>
+        <IconButton aria-label="Add to Cart" onClick={handleAddToCart}>
+          <AddShoppingCart />
+        </IconButton>
+      </CardActions>
+    </Card>
+
+   
       <Wrapper>
         <ImgContainer>
-          <Image src="https://5.imimg.com/data5/AG/TB/MY-10139824/15-500x500.jpg" />
+          <Image src={product.media.source} />
         </ImgContainer>
         <InfoContainer>
-          <Title>Denim Jumpsuit</Title>
+          <Title>{product.name}</Title>
           <Desc>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore
-            adipisci quas earum nulla, eum repellat eaque odio sit? Dignissimos
-            iusto eaque, ipsa ullam harum necessitatibus sed sint recusandae
-            inventore. Quae.
+          {product.description}
           </Desc>
-          <Price>$ 29</Price>
-          <FilterContainer>
-            <Filter>
-              <FilterTitle>Color</FilterTitle>
-              <FilterColor color="black" />
-              <FilterColor color="darkblue" />
-              <FilterColor color="gray" />
-            </Filter>
-
-            <Filter>
-              <FilterTitle>Size</FilterTitle>
-              <FilterSize>
-                <FilterSizeOption>XS</FilterSizeOption>
-                <FilterSizeOption>S</FilterSizeOption>
-                <FilterSizeOption>M</FilterSizeOption>
-                <FilterSizeOption>L</FilterSizeOption>
-                <FilterSizeOption>XL</FilterSizeOption>
-              </FilterSize>
-            </Filter>
-          </FilterContainer>
+          <Price>   {product.price.formatted_with_symbol}</Price>
+          
           <AddContainer>
-            <AmountContainer>
-              <Remove/>
-              <Amount>1</Amount>
-              <Add/>
-            </AmountContainer>
-            <Button>ADD TO CART</Button>
+            
+            <Button onClick={handleAddToCart}>ADD TO CART</Button>
           </AddContainer>
         </InfoContainer>
       </Wrapper>
