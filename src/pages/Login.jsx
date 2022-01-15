@@ -68,7 +68,7 @@ const Link = styled.a`
 const Login = () => {
   return (
     <>
-    <Navbar/>
+    
     <Container>
     
       <Wrapper>

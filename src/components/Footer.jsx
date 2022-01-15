@@ -4,7 +4,10 @@ import styled from "styled-components";
 import { mobile } from "../responsive";
 const Container = styled.div`
   display: flex;
+  background-color: #1f1e1e;
+  color: #b2b5b8;
   ${mobile({ flexDirection: "column" })}
+  border-radius: 10px 10px 0px 0px;
 `;
 const Left = styled.div`
   flex: 1;
@@ -77,12 +80,7 @@ const Footer = () => {
   return (
     <Container>
       <Left>
-        <Logo>ShopeBae</Logo>
-        <Desc>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-          Necessitatibus in, laboriosam quis alias expedita quam odio. Nihil
-          sunt delectus ipsa?
-        </Desc>
+        <Logo>audiobae</Logo>
         <SocialContainer>
           <SocialIcon color="385999">
             <Facebook />
@@ -97,27 +95,32 @@ const Footer = () => {
             <Pinterest />
           </SocialIcon>
         </SocialContainer>
+        <Desc>
+        In India’s fast growing retail industry filled with crowded hyper markets, monotonous electronic chains and absent music outlets, comes an innovative concept store that combines fashion, technology and entertainment. 
+        </Desc>
+        
       </Left>
       <Center>
-            <Title>Jump To</Title>
+            <Title>Quick Links</Title>
             <List>
                 <ListItem>Home</ListItem>
                 <ListItem>Cart</ListItem>
-                <ListItem>Men Fashion</ListItem>
-                <ListItem>Women Fashion</ListItem>
-                <ListItem>Accessories</ListItem>
+                <ListItem>TWS Headsets</ListItem>
+                <ListItem>Over The Head Headsets</ListItem>
+                <ListItem>In Ear Headsets</ListItem>
                 <ListItem>My Account</ListItem>
                 <ListItem>Order Tracking</ListItem>
                 <ListItem>Wishlist</ListItem>
+                <ListItem>Coupons</ListItem>
                 <ListItem>FAQ</ListItem>
             </List>
 
       </Center>
       <Right>
         <Title>Contact</Title>
-        <ContactItem> <Room style={{marginRight:"10px"}}/> 622 Dixie path, Dehradun 98336</ContactItem>
-        <ContactItem><Phone style={{marginRight:"10px"}}/> +1 123 466</ContactItem>
-        <ContactItem><MailOutline style={{marginRight:"10px"}}/> support@shopbae.com</ContactItem>
+        <ContactItem> <Room style={{marginRight:"10px"}}/> 644/13 Calicut, Kerala, India</ContactItem>
+        <ContactItem><Phone style={{marginRight:"10px"}}/> +91 9847 777 111</ContactItem>
+        <ContactItem><MailOutline style={{marginRight:"10px"}}/> support@audiobae.com</ContactItem>
         <Payment src="https://i.ibb.co/Qfvn4z6/payment.png"/>
       </Right>
     </Container>

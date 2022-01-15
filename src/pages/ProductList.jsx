@@ -116,13 +116,12 @@ const ProductList = () => {
 
   return (
     <Container>
-      <Navbar />
-      
+     
       <div style={{ display: 'flex' }}>
         <CssBaseline />
         
         <Switch>
-        <Route path="/" exact >
+        <Route exact path="/"  >
         <Home />
       </Route>
       <Route path="/login" >

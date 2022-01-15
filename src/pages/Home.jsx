@@ -15,11 +15,12 @@ const Home = () => {
  
     <div>
       
-      <Navbar />
+    
       <Slider/>
       <Categories/> 
       <PopularProducts/>
-      <Footer/>
+    
+    
       
     </div>
   

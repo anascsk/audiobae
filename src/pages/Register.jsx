@@ -70,7 +70,7 @@ const Button = styled.button`
 const Register = () => {
   return (
     <>
-    <Navbar/>
+   
     <Container>
       
       <Wrapper>

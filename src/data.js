@@ -44,33 +44,41 @@ export const sliderItems = [
     {
       id:1,
       img:"https://cdn.shopify.com/s/files/1/0153/8863/products/Headphone-Zone-Sennheiser-HD560S_2000x.jpg?v=1606982042",
+      price:25999,
     },
     {
       id:2,
       img:"https://cdn.shopify.com/s/files/1/0153/8863/products/audio-technica-ath-m20x-headphone-zone-13979077017663_2000x.jpg?v=1579701938",
+      price:7899,
     },
     {
       id:3,
       img:"https://cdn.shopify.com/s/files/1/0153/8863/products/Headphone-Zone-FiiO-FH7-2_2000x.jpg?v=1624598648",
+      price:28000,
     },
     {
       id:4,
       img:"https://cdn.shopify.com/s/files/1/0153/8863/products/sony-wf-1000xm3-headphone-zone-13631761383487_2000x.jpg?v=1580413295",
+      price:9999,
     },
     {
       id:5,
       img:"https://cdn.shopify.com/s/files/1/0153/8863/products/12_e70ab51a-a8e7-442a-9ef6-aad13ea7c60c_2000x.jpg?v=1611318640",
+      price:12499,
     },
     {
       id:6,
       img:"https://cdn.shopify.com/s/files/1/0153/8863/products/Meze-12-Classics-V2-01_2000x.jpg?v=1612869168",
+      price:25999,
     },
     {
       id:7,
       img:"https://cdn.shopify.com/s/files/1/0153/8863/products/Headphone-Zone-Sennheiser-HD-820-1160-1160-1_2000x.jpg?v=1593677179",
+      price:14499,
     },
     {
       id:8,
       img:"https://cdn.shopify.com/s/files/1/0153/8863/products/Headphone-Zone-Astell_Kern-Layla-AION-1160-1160-1_2000x.jpg?v=1589870466",
+      price:3599,
     },
   ]
