@@ -94,7 +94,9 @@ const MenuItem = styled.div`
   ${mobile({ fontSize: "12px", marginLeft: "10px" })}
 `;
 
-const Navbar = () => {
+const Navbar = ({cart}) => {
+  
+ 
   return (
     <Container>
       <Wrapper>
@@ -122,7 +124,7 @@ const Navbar = () => {
           </Link>
           <MenuItem>
             <Link to={"/cart"}>
-              <Badge badgeContent={4} color="primary">
+              <Badge badgeContent={cart.total_items} color="primary">
                 <ShoppingCartOutlined />
               </Badge>
             </Link>

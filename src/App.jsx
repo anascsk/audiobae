@@ -53,7 +53,7 @@ const App = () => {
   const [cart, setCart] = useState({});
   const [order, setOrder] = useState({});
   const [errorMessage, setErrorMessage] = useState("");
-
+  const [cartCount, setCartCount] = useState({});
 
   const fetchProducts = async () => {
     const { data } = await commerce.products.list();
@@ -62,14 +62,12 @@ const App = () => {
   };
   const fetchCart = async () => {
     setCart(await commerce.cart.retrieve());
-    
   };
   const handleAddToCart = async (productId, quantity) => {
     const item = await commerce.cart.add(productId, quantity);
 
     setCart(item.cart);
   };
- 
 
   const handleUpdateCartQty = async (lineItemId, quantity) => {
     const response = await commerce.cart.update(lineItemId, { quantity });
@@ -86,7 +84,7 @@ const App = () => {
 
     setCart(response.cart);
   };
-  
+
   const refreshCart = async () => {
     const newCart = await commerce.cart.refresh();
 
@@ -105,19 +103,27 @@ const App = () => {
       refreshCart();
     } catch (error) {
       setErrorMessage(error.data.error.message);
-      console.log(error.data)
+      console.log(error.data);
     }
   };
+
+  // const cartItemCounts = async () => {
+  //   const response = await commerce.cart.line_items.length;
+    
+  //   setCartCount(response);
+  //   console.log({cartCount});
+  // };
 
   useEffect(() => {
     fetchProducts();
     fetchCart();
+    // cartItemCounts();
   }, []);
 
   return (
     <>
       <Router>
-        <Navbar />
+        <Navbar cart={cart} />
         <Switch>
           <Route path="/" exact>
             <Home />
@@ -127,7 +133,7 @@ const App = () => {
             <Register />
           </Route>
           <Route path="/products">
-            <Products products={products} onAddToCart={handleAddToCart}/>
+            <Products products={products} onAddToCart={handleAddToCart} />
           </Route>
           <Route exact path="/cart">
             <Cart
@@ -138,8 +144,13 @@ const App = () => {
             />
           </Route>
           <Route path="/checkout">
-            <Checkout cart={cart} order={order} onCaptureCheckout={handleCaptureCheckout} error={errorMessage} />
-          </Route> 
+            <Checkout
+              cart={cart}
+              order={order}
+              onCaptureCheckout={handleCaptureCheckout}
+              error={errorMessage}
+            />
+          </Route>
         </Switch>
       </Router>
       <Footer />
