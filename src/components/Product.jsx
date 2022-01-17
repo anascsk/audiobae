@@ -147,7 +147,7 @@ const Product = ({ product, onAddToCart }) => {
       </Wrapper>
    
 
-      <Footer />
+     
     </Container>
   );
 };

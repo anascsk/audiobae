@@ -8,11 +8,16 @@ import {
   CardMedia,
 } from "@material-ui/core";
 
-const CartItem = ({ item}) => {
-  
+const CartItem = ({ item, onUpdateCartQty, onRemoveFromCart}) => {
+  const handleUpdateCartQty = (lineItemId, newQuantity) => onUpdateCartQty(lineItemId, newQuantity);
+
+  const handleRemoveFromCart = (lineItemId) => onRemoveFromCart(lineItemId);
+  console.log({item})
  
+
+
   return (
-    <Card>
+    <Card>hiiiiii
       <CardMedia image={item.media.source} alt={item.name} />
       <CardContent>
         <Typography variant="h4">{item.name}</Typography>
@@ -25,7 +30,7 @@ const CartItem = ({ item}) => {
           <Button
             type="button"
             size="small"
-            // onClick={() => handleUpdateCartQty(item.id, item.quantity - 1)}
+            onClick={() => handleUpdateCartQty(item.id, item.quantity - 1)}
           >
             -
           </Button>
@@ -33,7 +38,7 @@ const CartItem = ({ item}) => {
           <Button
             type="button"
             size="small"
-            // onClick={() => handleUpdateCartQty(item.id, item.quantity + 1)}
+            onClick={() => handleUpdateCartQty(item.id, item.quantity + 1)}
           >
             +
           </Button>
@@ -42,7 +47,7 @@ const CartItem = ({ item}) => {
           variant="contained"
           type="button"
           color="secondary"
-          // onClick={() => handleRemoveFromCart(item.id)}
+          onClick={() => handleRemoveFromCart(item.id)}
         >
           Remove
         </Button>
