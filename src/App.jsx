@@ -50,14 +50,68 @@ const Option = styled.option``
 
 
 const App = () => {
+  const [user, setUser] = useState(false)
+  const [cartItems, setCartItems] = useState([]);
+
+  const fetchCart = async () => {
+    const Data = await commerce.cart.retrieve();
+    return Data.line_items;
+    console.log(Data.line_items)
+  };
+  const handleUpdateCartQty = async (lineItemId, quantity) => {
+    const response = await commerce.cart.update(lineItemId, { quantity });
+
+    setCartItems(response.cart);
+  };
+  const handleRemoveFromCart = async (lineItemId) => {
+    const response = await commerce.cart.remove(lineItemId);
+
+    setCartItems(response.cart);
+  };
+  const handleEmptyCart = async () => {
+    const response = await commerce.cart.empty();
+
+    setCartItems(response.cart);
+  };
+
   
+  useEffect(() => {
+    setCartItems(fetchCart())
+  }, [])
+
   return (
+    <>
+    
     <Router>
-      <>
-        <Home />
-        
-        </>
+    <Navbar/>
+     <Switch>
+       <Route path="/" exact >
+         <Home/>
+
+       </Route>
+        <Route path="/login" >
+        {user ? <Redirect to="/"/> :  <Login/> }
+      </Route>
+      <Route path="/register" >
+        <Register />
+      </Route>
+           <Route path="/products">
+            <ProductList/>
+            
+          </Route>
+         <Route exact path="/cart">
+            <Cart cartItems={cartItems} onUpdateCartQty={handleUpdateCartQty} onRemoveFromCart={handleRemoveFromCart} onEmptyCart={handleEmptyCart}/>
+          </Route>
+          {/* <Route path="/checkout">
+            <Checkout cart={cart} order={order} onCaptureCheckout={handleCaptureCheckout} error={errorMessage} />
+          </Route>  */}
+
+
+
+     </Switch>
     </Router>
+    <Footer/>
+    </>
   
         
   )
