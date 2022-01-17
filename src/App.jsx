@@ -105,6 +105,7 @@ const App = () => {
       refreshCart();
     } catch (error) {
       setErrorMessage(error.data.error.message);
+      console.log(error.data)
     }
   };
 
@@ -136,9 +137,9 @@ const App = () => {
               onEmptyCart={handleEmptyCart}
             />
           </Route>
-          {/* <Route path="/checkout">
+          <Route path="/checkout">
             <Checkout cart={cart} order={order} onCaptureCheckout={handleCaptureCheckout} error={errorMessage} />
-          </Route>  */}
+          </Route> 
         </Switch>
       </Router>
       <Footer />

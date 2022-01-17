@@ -22,7 +22,7 @@ const Cart = ({cart,onUpdateCartQty, onRemoveFromCart, onEmptyCart}) => {
   );
 
   if (!cart.line_items) return 'Please wait...';
-  console.log({cart})
+  console.log(cart.line_itemsc)
 
   const renderCart = () => (
     <>
@@ -52,7 +52,7 @@ const Cart = ({cart,onUpdateCartQty, onRemoveFromCart, onEmptyCart}) => {
       <div />
       <Typography  variant="h3" gutterBottom>Your Shopping Cart</Typography>
       {renderCart()}
-      { !cart.contents ? renderEmptyCart() : renderCart() }
+      { !cart.line_items ? renderEmptyCart() : renderCart() }
     </Container>
     
   );
