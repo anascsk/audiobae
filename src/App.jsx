@@ -1,9 +1,7 @@
-import Product from "./components/Product";
-import Home from "./pages/Home";
-import ProductList from "./pages/ProductList";
+
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import Cart from "./pages/Cart";
+import Cart from "./components/Cart/Cart";
 import {
   BrowserRouter as Router,
   Route,
@@ -14,38 +12,15 @@ import Products from "./components/Products";
 import Footer from "./components/Footer";
 
 import { useState, useEffect } from "react";
-import styled from "styled-components";
 import Navbar from "./components/Navbar";
-import Checkout from "./pages/Checkout";
+import Checkout from "./components/Cart/Checkout";
 import { mobile } from "./responsive";
 import { commerce } from "./lib/commerce";
 
-import { CssBaseline } from "@material-ui/core";
+import Slider from "./components/Slider";
+import Categories from "./components/Categories";
+import PopularProducts from "./components/PopularProducts";
 
-const Container = styled.div``;
-const Title = styled.h1``;
-const FilterContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
-const Filter = styled.div`
-  margin: 20px;
-  ${mobile({ width: "0px 20px", display: "flex", flexDirection: "column" })}
-`;
-const FilterText = styled.span`
-  font-size: 20px;
-  font-weight: 600;
-  margin-right: 20px;
-  ${mobile({ marginRight: "0px" })}
-`;
-
-const Select = styled.select`
-  padding: 10px;
-  margin-right: 20px;
-  ${mobile({ margin: "10px 0px" })}
-`;
-
-const Option = styled.option``;
 
 const App = () => {
   const [user, setUser] = useState(false);
@@ -107,17 +82,9 @@ const App = () => {
     }
   };
 
-  // const cartItemCounts = async () => {
-  //   const response = await commerce.cart.line_items.length;
-    
-  //   setCartCount(response);
-  //   console.log({cartCount});
-  // };
-
   useEffect(() => {
     fetchProducts();
     fetchCart();
-    // cartItemCounts();
   }, []);
 
   return (
@@ -126,7 +93,9 @@ const App = () => {
         <Navbar cart={cart} />
         <Switch>
           <Route path="/" exact>
-            <Home />
+            <Slider />
+            <Categories />
+            <PopularProducts />
           </Route>
           <Route path="/login">{user ? <Redirect to="/" /> : <Login />}</Route>
           <Route path="/register">

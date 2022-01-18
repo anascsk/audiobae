@@ -7,13 +7,11 @@ import {
 import React from "react";
 import styled from "styled-components";
 import { mobile } from "../responsive";
-import Home from "../pages/Home";
-import logo from "../images/logo.png";
 import { Link } from "react-router-dom";
 
 const Container = styled.div`
-  height: 90px;
-  background-color: #90e0ef;
+  height: 80px;
+  background-color: #b6e7f0;
   ${mobile({ height: "50px" })}
   max-width: 100vw;
 `;
@@ -21,6 +19,7 @@ const Container = styled.div`
 const Logo = styled.h4`
   font-size: 30px;
   color: black;
+  margin-left: 10px;
 `;
 const Wrapper = styled.div`
   padding: 10px 10px;
@@ -37,8 +36,7 @@ const Left = styled.div`
   text-decoration: none;
 `;
 const Center = styled.div`
-  /* flex: 1;
-  text-decoration: none; */
+ 
 `;
 const Right = styled.div`
   flex: 1;

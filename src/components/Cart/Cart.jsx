@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Container, Typography, Button, Grid } from "@material-ui/core";
 import { Link } from "react-router-dom";
 
-import CartItem from "../components/CartItem";
+import CartItem from "./CartItem";
 
 const Cart = ({ cart, onUpdateCartQty, onRemoveFromCart, onEmptyCart }) => {
   const handleEmptyCart = () => onEmptyCart();
@@ -66,7 +66,7 @@ const Cart = ({ cart, onUpdateCartQty, onRemoveFromCart, onEmptyCart }) => {
         Your Shopping Cart
       </Typography>
       
-      {!cart.line_items ? renderEmptyCart() : renderCart()}
+      {!cart.line_items.length ? renderEmptyCart() : renderCart()}
     </Container>
   );
 };

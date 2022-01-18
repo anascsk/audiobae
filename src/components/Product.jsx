@@ -1,25 +1,33 @@
 import { Add, Remove } from "@material-ui/icons";
-import { Card, CardMedia, CardContent, CardActions, Typography, IconButton } from '@material-ui/core';
-import { AddShoppingCart } from '@material-ui/icons';
+import { Card, CardContent, CardActions, Typography } from "@material-ui/core";
+import { AddShoppingCartOutlined } from "@material-ui/icons";
 import styled from "styled-components";
-import Footer from "./Footer";
 
 import { mobile } from "../responsive";
 
-const Container = styled.div``;
+const Container = styled.div`
+
+  height: 400px;
+  width: 300px;
+  padding: 10px;
+  border-radius: 15px;
+  border: 2px solid #edf7f8;
+
+`;
 const Wrapper = styled.div`
   padding: 50px;
   display: flex;
   ${mobile({ padding: "10px", flexDirection: "column" })}
 `;
-const ImgContainer = styled.div`
-  flex: 1;
-`;
+
 const Image = styled.img`
-  width: 100%;
-  height: 90vh;
-  object-fit: cover;
+  width: 200px;
+  height: 180px;
+
   ${mobile({ height: "40vh" })}
+`;
+const IconButton = styled.div`
+ 
 `;
 const InfoContainer = styled.div`
   flex: 1;
@@ -61,76 +69,84 @@ const FilterColor = styled.div`
   cursor: pointer;
 `;
 const FilterSize = styled.select`
-margin-left: 10px;
-padding: 5px;
+  margin-left: 10px;
+  padding: 5px;
 `;
 const FilterSizeOption = styled.option``;
 const AddContainer = styled.div`
-width: 50%;
-display: flex;
-align-items: center;
-justify-content: space-between;
-${mobile({ width: "100%" })}
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  ${mobile({ width: "100%" })}
 `;
 const AmountContainer = styled.div`
-display: flex;
-align-items: center;
-font-weight: 700;
-;
+  display: flex;
+  align-items: center;
+  font-weight: 700; ;
 `;
 const Amount = styled.span`
-width: 30px;
-height: 30px;
-border-radius: 10px;
-border: 1px solid teal;
-display: flex;
-align-items: center;
-justify-content: center;
-margin: 0px 5px;
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+  border: 1px solid teal;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0px 5px;
 `;
 const Button = styled.button`
-padding: 15px;
-border: 2px solid teal;
-background-color: white;
-cursor: pointer;
-font-weight: 500;
+  padding: 15px;
+  border: 2px solid teal;
+  background-color: white;
+  cursor: pointer;
+  font-weight: 500;
 
- &:hover{
-   background-color: #f8f4f4;
- }
+  &:hover {
+    background-color: #f8f4f4;
+  }
 `;
 const Product = ({ product, onAddToCart }) => {
   const handleAddToCart = () => onAddToCart(product.id, 1);
 
   return (
-    <Container>
-     
-      <Card>
-      <CardMedia image={product.media.source} title={product.name} />
-      <CardContent>
-        <div >
-          <Typography gutterBottom variant="h5" component="h2">
-            {product.name}
-          </Typography>
-          <img src={product.media.source} alt='' width="200px" height="180px" />
+    
+      
+        <Container>
+          <div>
+            <Typography gutterBottom variant="h5" component="h2">
+              {product.name}
+            </Typography>
+            <img
+              src={product.media.source}
+              alt=""
+              width="200px"
+              height="180px"
+            />
 
-          <Typography gutterBottom variant="h5" component="h2">
-            {product.price.formatted_with_symbol}
-          </Typography>
-        </div>
-        <Typography dangerouslySetInnerHTML={{ __html: product.description }} variant="body2" color="textSecondary" component="p" />
-      </CardContent>
-      <CardActions disableSpacing>
-        <IconButton aria-label="Add to Cart" onClick={handleAddToCart}>
-          <AddShoppingCart />
-        </IconButton>
-      </CardActions>
-    </Card>
+            <Typography gutterBottom variant="h5" component="h2">
+              {product.price.formatted_with_symbol}
+            </Typography>
+          </div>
+          <Typography
+            dangerouslySetInnerHTML={{ __html: product.description }}
+            variant="body2"
+            color="textSecondary"
+            component="p"
+          />
+        
+        <CardActions disableSpacing>
+          <IconButton aria-label="Add to Cart" onClick={handleAddToCart}>
+            <AddShoppingCartOutlined />
+          </IconButton>
+        </CardActions>
+        
 
-   
-      <Wrapper>
+      {/* <Wrapper>
         <ImgContainer>
-          <Image src={product.media.source} />
+          <Image src={product.media.source} alt='' width="200px" height="180px">
+          
+          </Image>
         </ImgContainer>
         <InfoContainer>
           <Title>{product.name}</Title>
@@ -145,9 +161,7 @@ const Product = ({ product, onAddToCart }) => {
           </AddContainer>
         </InfoContainer>
       </Wrapper>
-   
-
-     
+    */}
     </Container>
   );
 };

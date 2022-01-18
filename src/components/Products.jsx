@@ -1,13 +1,18 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
 import Product from "./Product";
+import styled from "styled-components";
 
+
+const Container = styled.div`
+  padding: 20px;
+`
 
 const Products = ({ products, onAddToCart }) => {
   if (!products?.length) return <p>Loading...</p>;
 
   return (
-    <main>
+    <Container>
       <div />
       <Grid container justify="center" spacing={4}>
         {products.map((product) => (
@@ -16,7 +21,7 @@ const Products = ({ products, onAddToCart }) => {
           </Grid>
         ))}
       </Grid>
-    </main>
+    </Container>
   );
 };
 

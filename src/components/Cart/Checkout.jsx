@@ -11,17 +11,42 @@ import {
   Button,
 } from "@material-ui/core";
 import { Link, useHistory } from "react-router-dom";
-
-import { commerce } from "../lib/commerce";
+import styled from "styled-components";
+import { commerce } from "../../lib/commerce";
 import AddressForm from "./AddressForm";
 import PaymentForm from "./PaymentForm";
 
+
+const Container = styled.div`
+max-width: 50%;
+min-height: 70vh;
+margin: auto;
+margin-bottom: 30px;
+
+`
+const Title = styled.div`
+margin: 50px 0 50px ;
+font-size: 30px;
+display: flex;
+justify-content: center;
+
+`
+const P = styled.div`
+margin: 30px 0 ;
+font-size: 15px;
+display: flex;
+justify-content: center;
+color: #301b44;
+`
+
+
 const steps = ["Shipping address", "Payment details"];
 
-const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
+const Checkout = ({ cart, onCaptureCheckout, order, error }) => {
   const [checkoutToken, setCheckoutToken] = useState(null);
   const [activeStep, setActiveStep] = useState(0);
   const [shippingData, setShippingData] = useState({});
+  const [isFinished, setIsFinished] = useState(false);
   const history = useHistory();
 
   const nextStep = () => setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -69,21 +94,38 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
           Back to home
         </Button>
       </>
-    ) : (
-      <div>
-        <CircularProgress />
-      </div>
-    );
-
-  if (error) {
-    Confirmation = () => (
+    ) : isFinished ? (
       <>
-        <Typography variant="h5">Error: {error}</Typography>
+        <div>
+          <Typography variant="h5">Thank you for your purchase</Typography>
+          <Divider />
+        </div>
         <br />
         <Button component={Link} variant="outlined" type="button" to="/">
           Back to home
         </Button>
       </>
+    ) : (
+      <div >
+        <CircularProgress />
+      </div>
+    );
+
+
+  if (error) {
+    Confirmation = () => (
+      <Container>
+        <div>
+          <Title >Thank you for your purchase</Title>
+          <P >Order ref: CMMRCTST-207548</P>
+          <Divider />
+        </div>
+        
+        <br />
+        <Button component={Link} variant="outlined" type="button" to="/">
+          Back to home
+        </Button>
+      </Container>
     );
   }
 
@@ -106,13 +148,13 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
     );
 
   return (
-    <>
-      <CssBaseline />
+    <Container>
+      
       <main>
         <Paper>
-          <Typography variant="h4" align="center">
+          <Title >
             Checkout
-          </Typography>
+          </Title>
           <Stepper activeStep={activeStep}>
             {steps.map((label) => (
               <Step key={label}>
@@ -127,7 +169,7 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
           )}
         </Paper>
       </main>
-    </>
+    </Container>
   );
 };
 
