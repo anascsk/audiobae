@@ -12,14 +12,15 @@ import { Link } from "react-router-dom";
 const Container = styled.div`
   height: 80px;
   background-color: #b6e7f0;
-  ${mobile({ height: "50px" })}
-  max-width: 100vw;
+  ${mobile({ height: "70px" })}
+  width: 100vw;
 `;
 
 const Logo = styled.h4`
   font-size: 30px;
   color: black;
   margin-left: 10px;
+  ${mobile({ fontSize: "30px" })}
 `;
 const Wrapper = styled.div`
   padding: 10px 10px;
@@ -30,16 +31,17 @@ const Wrapper = styled.div`
 `;
 
 const Left = styled.div`
-  flex: 1;
+  
   display: flex;
   align-items: center;
   text-decoration: none;
+  width: 20%;
 `;
 const Center = styled.div`
  
 `;
 const Right = styled.div`
-  flex: 1;
+  
   display: flex;
   align-items: center;
   margin-right: 20px;
@@ -61,6 +63,7 @@ const SearchContainer = styled.div`
   margin-top: 10px;
   padding: 5px;
   border-radius: 5px;
+  ${mobile({ padding: "0px", border: "none", })}
   &:focus{
    
   }
@@ -69,17 +72,18 @@ const SearchContainer = styled.div`
 
 const Input = styled.input`
   border: none;
+  
   &:focus {
     outline: none;
   }
   
-  width: 500px;
-  height: 33px;
+  width: 100%;
+  height: 100%;
   border-radius: 5px;
   font-size: 15px;
   padding: 5px;
   margin-right: 20px;
-  ${mobile({ width: "50px" })}
+  ${mobile({ height: "50%" })}
 `;
 
 const MenuItem = styled.div`
@@ -89,7 +93,7 @@ const MenuItem = styled.div`
   color: #05679c;
   cursor: pointer;
   justify-content: space-between;
-  ${mobile({ fontSize: "12px", marginLeft: "10px" })}
+  ${mobile({ fontSize: "14px", marginLeft: "10px" })}
 `;
 
 const Navbar = ({cart}) => {
@@ -103,12 +107,13 @@ const Navbar = ({cart}) => {
             <Logo>audiobae</Logo>
             
           </Link>
+          </Left>
           <SearchContainer style={{ color: "gray", fontSize: 14 }}>
             <Input placeholder="Search for products, brands and more" />
             <Search />
           </SearchContainer>
-        </Left>
-        <Center></Center>
+        
+       
 
         <Right>
           <Language style={{ marginLeft: 5 }}>
@@ -118,7 +123,7 @@ const Navbar = ({cart}) => {
             <MenuItem>Register </MenuItem>
           </Link>
           <Link to={"/login"} style={{ textDecoration: "none" }}>
-            <MenuItem>Log In</MenuItem>
+            <MenuItem>Login</MenuItem>
           </Link>
           <MenuItem>
             <Link to={"/cart"}>

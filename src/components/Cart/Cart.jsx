@@ -1,8 +1,43 @@
 import { useState } from "react";
-import { Container, Typography, Button, Grid } from "@material-ui/core";
+import {  Typography, Button, Grid } from "@material-ui/core";
 import { Link } from "react-router-dom";
-
 import CartItem from "./CartItem";
+import styled from "styled-components";
+
+const Container = styled.div`
+display: flex;
+flex-direction: row;
+
+`
+const Wrap = styled.div`
+  display: flex;
+  height: 300px;
+  width: 95vw;
+  padding: 10px;
+  border-radius: 15px;
+  border: 2px solid #edf7f8;
+  margin-bottom: 20px;
+
+`;
+const Title = styled.h2`
+  text-align: center;
+  font-size: 50px;
+  margin: 30px;
+  bottom: 40px;
+`
+const Total = styled.h3`
+font-size: 40px;
+display: flex;
+justify-content: flex-end;
+margin-right: 10%;
+margin-bottom: 1%;
+`
+const Action = styled.div`
+display: flex;
+justify-content: space-between;
+margin-right: 10%;
+margin-bottom: 5%;
+`
 
 const Cart = ({ cart, onUpdateCartQty, onRemoveFromCart, onEmptyCart }) => {
   const handleEmptyCart = () => onEmptyCart();
@@ -17,31 +52,34 @@ const Cart = ({ cart, onUpdateCartQty, onRemoveFromCart, onEmptyCart }) => {
 
   const renderCart = () => (
     <>
-      <Container>
+      
         <Grid container spacing={3}>
           {cart.line_items.map((lineItem) => (
             <Grid item xs={12} sm={4} key={lineItem.id}>
+              
+              
               <CartItem
                 item={lineItem}
                 onUpdateCartQty={onUpdateCartQty}
                 onRemoveFromCart={onRemoveFromCart}
               />
+              
             </Grid>
           ))}
         </Grid>
         <div>
-          <Typography variant="h4">
+          <Total>
             Subtotal: {cart.subtotal.formatted_with_symbol}
-          </Typography>
-          <div>
+          </Total>
+          <Action>
             <Button
               size="large"
               type="button"
-              variant="contained"
+              variant="outlined"
               color="secondary"
               onClick={handleEmptyCart}
             >
-              Empty cart
+              EMPTY CART
             </Button>
             <Button
               component={Link}
@@ -51,23 +89,24 @@ const Cart = ({ cart, onUpdateCartQty, onRemoveFromCart, onEmptyCart }) => {
               variant="contained"
               color="primary"
             >
-              Checkout
+              CHECKOUT
             </Button>
-          </div>
+          </Action>
         </div>
-      </Container>
+     
     </>
   );
 
   return (
-    <Container>
-      <div />
-      <Typography variant="h3" gutterBottom>
-        Your Shopping Cart
-      </Typography>
-      
+    <>
+    
+      <Title>
+       Shopping Cart
+      </Title>
+     
       {!cart.line_items.length ? renderEmptyCart() : renderCart()}
-    </Container>
+      
+    </>
   );
 };
 

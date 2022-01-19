@@ -1,12 +1,13 @@
 import { Facebook, Instagram, MailOutline, Phone, Pinterest, Room, Twitter } from "@material-ui/icons";
 import React from "react";
 import styled from "styled-components";
-import { mobile } from "../responsive";
+import { mobile,tablet } from "../responsive";
 const Container = styled.div`
   display: flex;
   background-color: #1f1e1e;
   color: #b2b5b8;
   ${mobile({ flexDirection: "column" })}
+  ${tablet({ flexDirection: "column", justifyContent: "center" })}
   border-radius: 10px 10px 0px 0px;
 `;
 const Left = styled.div`
@@ -14,11 +15,13 @@ const Left = styled.div`
   display: flex;
   flex-direction: column;
   padding: 20px;
+  ${tablet({ textAlign: "center" })}
 `;
 const Center = styled.div`
   flex: 1;
   padding: 20px;
   ${mobile({ display: "none" })}
+  ${tablet({ textAlign: "center" })}
 `;
 
 const Title = styled.h3`
@@ -42,7 +45,9 @@ width: 50%;
 const Right = styled.div`
   flex: 1;
   padding: 15px; 
-  ${mobile({ backgroundColor: "lightgray" })}
+  ${mobile({ backgroundColor: "darkslategrey" })}
+  ${tablet({ textAlign: "center" })}
+  
 `;
 
 const Logo = styled.h1``;
@@ -62,6 +67,7 @@ const SocialIcon = styled.div`
   align-items: center;
   justify-content: center;
   margin-right: 20px;
+  ${mobile({ width: "30px",height: "30px" })}
 `;
 
 const ContactItem = styled.div`
@@ -69,6 +75,7 @@ const ContactItem = styled.div`
 margin-bottom: 20px;
 display: flex;
 align-items: center;
+${tablet({ justifyContent: "center" })}
 `
 
 

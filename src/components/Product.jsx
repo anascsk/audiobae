@@ -1,17 +1,18 @@
 import { Add, Remove } from "@material-ui/icons";
-import { Card, CardContent, CardActions, Typography } from "@material-ui/core";
+import { Card, CardContent, CardActions, Typography, Button } from "@material-ui/core";
 import { AddShoppingCartOutlined } from "@material-ui/icons";
 import styled from "styled-components";
 
 import { mobile } from "../responsive";
 
 const Container = styled.div`
-
+  position: relative;
   height: 400px;
   width: 300px;
   padding: 10px;
   border-radius: 15px;
   border: 2px solid #edf7f8;
+  margin-bottom: 40px;
 
 `;
 const Wrapper = styled.div`
@@ -26,8 +27,22 @@ const Image = styled.img`
 
   ${mobile({ height: "40vh" })}
 `;
+
+const IconContainer = styled.div`
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  bottom: 0;
+  margin-bottom: 15px;
+  margin-left: 25%;
+  
+  
+`
 const IconButton = styled.div`
- 
+cursor: pointer;
+display: flex;
+margin: auto;
+
 `;
 const InfoContainer = styled.div`
   flex: 1;
@@ -95,17 +110,7 @@ const Amount = styled.span`
   justify-content: center;
   margin: 0px 5px;
 `;
-const Button = styled.button`
-  padding: 15px;
-  border: 2px solid teal;
-  background-color: white;
-  cursor: pointer;
-  font-weight: 500;
 
-  &:hover {
-    background-color: #f8f4f4;
-  }
-`;
 const Product = ({ product, onAddToCart }) => {
   const handleAddToCart = () => onAddToCart(product.id, 1);
 
@@ -114,7 +119,7 @@ const Product = ({ product, onAddToCart }) => {
       
         <Container>
           <div>
-            <Typography gutterBottom variant="h5" component="h2">
+            <Typography gutterBottom variant="h5" component="h2" style={{ color:'navy'}}>
               {product.name}
             </Typography>
             <img
@@ -135,33 +140,16 @@ const Product = ({ product, onAddToCart }) => {
             component="p"
           />
         
-        <CardActions disableSpacing>
-          <IconButton aria-label="Add to Cart" onClick={handleAddToCart}>
-            <AddShoppingCartOutlined />
-          </IconButton>
-        </CardActions>
+        <>
+          <IconContainer aria-label="Add to Cart" onClick={handleAddToCart}>
+          <IconButton><Button variant="contained" color="primary" endIcon={<AddShoppingCartOutlined style={{ color:'black'}}/>}>
+  ADD TO CART
+</Button></IconButton>
+          </IconContainer>
+        </>
         
 
-      {/* <Wrapper>
-        <ImgContainer>
-          <Image src={product.media.source} alt='' width="200px" height="180px">
-          
-          </Image>
-        </ImgContainer>
-        <InfoContainer>
-          <Title>{product.name}</Title>
-          <Desc>
-          {product.description}
-          </Desc>
-          <Price>   {product.price.formatted_with_symbol}</Price>
-          
-          <AddContainer>
-            
-            <Button onClick={handleAddToCart}>ADD TO CART</Button>
-          </AddContainer>
-        </InfoContainer>
-      </Wrapper>
-    */}
+     
     </Container>
   );
 };

@@ -4,13 +4,14 @@ import styled from "styled-components";
 import { sliderItems } from "../data";
 import { mobile } from "../responsive";
 
+
 const Container = styled.div`
   width: 100%;
   max-height: 100vh;
   display: flex;
   position: relative;
   overflow-x: hidden;
-   ${mobile({ display: "none" })}
+  ${mobile({ display: "none" })}
 `;
 
 const Arrow = styled.div`
@@ -37,6 +38,7 @@ const Wrapper = styled.div`
   display: flex;
   transition: all .8s ease;
   transform: translateX(${(props)=>props.slideIndex * -100}vw);
+  ${mobile({ padding: "0px", border: "none", })}
 `;
 
 const Slide = styled.div`
@@ -58,6 +60,7 @@ const InfoContainer = styled.div`
 
 const Image = styled.img`
   height: 80%;
+
 `;
 
 const Title = styled.div`

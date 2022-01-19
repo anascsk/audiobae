@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import {popularProducts} from "../data"
+import { tablet,mobile } from '../responsive'
 import Product from './PopularProduct'
 const Container = styled.div`
 padding: 20px;
@@ -15,6 +16,7 @@ margin-top: 70px;
     color: black;
     font-size: 50px;
    margin-left: 20px;
+   ${mobile({ fontSize: "20px" })}
 `
 const PopularProducts = () => {
     return (
