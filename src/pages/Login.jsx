@@ -75,7 +75,7 @@ const Login = ({setLoginEmail, setLoginPassword, loginHandler}) => {
         <Title>SIGN IN</Title>
         <Form>
           <Input placeholder="Email" onChange={(event) => setLoginEmail(event.target.value)}/>
-          <Input placeholder="Password" onChange={(event) => setLoginPassword(event.target.value)}/>
+          <Input type= "password" placeholder="Password" onChange={(event) => setLoginPassword(event.target.value)}/>
 
           <Button onClick={loginHandler}>LOGIN</Button>
           <Link>Forgot Password</Link>

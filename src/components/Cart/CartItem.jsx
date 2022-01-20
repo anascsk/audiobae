@@ -20,13 +20,14 @@ const InfoBottom = styled.div`
   flex-direction: column;
 `;
 const Wrap = styled.div`
-  height: 400px;
+  height: 360px;
   width: 400px;
   padding: 10px;
   border-radius: 15px;
   border: 1px solid #dfe0e07f;
   margin-bottom: 20px;
   margin-left: 20px;
+  background-color: #f9feff;
 `;
 
 const CartItem = ({ item, onUpdateCartQty, onRemoveFromCart }) => {

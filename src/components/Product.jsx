@@ -1,5 +1,11 @@
 import { Add, Remove } from "@material-ui/icons";
-import { Card, CardContent, CardActions, Typography, Button } from "@material-ui/core";
+import {
+  Card,
+  CardContent,
+  CardActions,
+  Typography,
+  Button,
+} from "@material-ui/core";
 import { AddShoppingCartOutlined } from "@material-ui/icons";
 import styled from "styled-components";
 
@@ -16,7 +22,6 @@ const Container = styled.div`
   border-radius: 15px;
   border: 2px solid #edf7f8;
   margin-bottom: 40px;
-
 `;
 const Wrapper = styled.div`
   padding: 50px;
@@ -38,55 +43,63 @@ const IconContainer = styled.div`
   bottom: 0;
   margin-bottom: 20px;
   /* margin-left: 25%; */
-  
-  
-`
+`;
 const IconButton = styled.div`
-cursor: pointer;
-display: flex;
-margin: auto;
-
+  cursor: pointer;
+  display: flex;
+  margin: auto;
+  
 `;
 
 const Product = ({ product, onAddToCart }) => {
   const handleAddToCart = () => onAddToCart(product.id, 1);
 
   return (
-    
-      
-        <Container>
-          <div>
-            <Typography gutterBottom variant="h5" component="h2" style={{ color:'#338087'}}>
-              {product.name}
-            </Typography>
-            <img
-              src={product.media.source}
-              alt=""
-              width="200px"
-              height="180px"
-            />
+    <Container>
+      <div>
+        <Typography
+          gutterBottom
+          variant="h5"
+          component="h2"
+          style={{ color: "#338087" }}
+        >
+          {product.name}
+        </Typography>
+        <img src={product.media.source} alt="" width="200px" height="180px" />
 
-            <Typography gutterBottom variant="h5" component="h2" style={{ color:'#545e5f'}}>
-              {product.price.formatted_with_symbol}
-            </Typography>
-          </div>
-          <Typography
-            dangerouslySetInnerHTML={{ __html: product.description }}
-            variant="body2"
-            color="textSecondary"
-            component="p"
-          />
-        
-        <>
-          <IconContainer aria-label="Add to Cart" onClick={handleAddToCart}>
-          <IconButton><Button variant="contained" color="primary" endIcon={<AddShoppingCartOutlined style={{ color:'black'}}/>}>
-  ADD TO CART
-</Button></IconButton>
-          </IconContainer>
-        </>
-        
+        <Typography
+          gutterBottom
+          variant="h5"
+          component="h2"
+          style={{ color: "#545e5f" }}
+        >
+          {product.price.formatted_with_symbol}
+        </Typography>
+      </div>
+      <Typography
+        dangerouslySetInnerHTML={{ __html: product.description }}
+        variant="body2"
+        color="textSecondary"
+        component="p"
+      />
 
-     
+      <>
+        <IconContainer aria-label="Add to Cart" onClick={handleAddToCart}>
+          <IconButton>
+            <Button
+              style={{
+                backgroundColor: "#91e0ef",
+                color: "black"
+              }}
+              variant="contained"
+              color="primary"
+              endIcon={<AddShoppingCartOutlined style={{ color: "black" }} />}
+            >
+              ADD TO CART
+            </Button>
+          </IconButton>
+        </IconContainer>
+      </>
     </Container>
   );
 };

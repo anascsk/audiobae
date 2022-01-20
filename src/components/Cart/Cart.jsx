@@ -24,6 +24,7 @@ const Title = styled.h2`
   font-size: 50px;
   margin: 30px;
   bottom: 40px;
+  margin-top: 70px;
 `
 const Total = styled.h3`
 font-size: 40px;
@@ -84,6 +85,7 @@ const Cart = ({ cart, onUpdateCartQty, onRemoveFromCart, onEmptyCart }) => {
             <Button
               component={Link}
               to="/checkout"
+              
               size="large"
               type="button"
               variant="contained"

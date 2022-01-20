@@ -97,7 +97,7 @@ const MenuItem = styled.div`
   margin-top: 3px;
   font-size: 18px;
   font-weight: 600;
-  color: #05679c;
+  color: #0a6596e6;
   cursor: pointer;
   justify-content: space-between;
   ${mobile({ fontSize: "13px", marginLeft: "10px" })}
