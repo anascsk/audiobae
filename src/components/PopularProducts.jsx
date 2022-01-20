@@ -12,16 +12,16 @@ justify-content: space-between;
 
 `
 const H1 = styled.h1`
-margin-top: 70px;
-    color: black;
-    font-size: 50px;
+margin-top: 50px;
+color: #3a3e41;
+    font-size: 40px;
    margin-left: 20px;
    ${mobile({ fontSize: "20px" })}
 `
 const PopularProducts = () => {
     return (
     <>
-        <H1>Hot Selling Products</H1>
+        <H1>AUDIOPHILE STARTER PACK</H1>
         <Container>
             
             {popularProducts.map((item) => (

@@ -1,7 +1,13 @@
-
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Cart from "./components/Cart/Cart";
+import {
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
+  createUserWithEmailAndPassword,
+} from "firebase/auth";
+import { auth } from "./lib/firebase-config";
 import {
   BrowserRouter as Router,
   Route,
@@ -21,14 +27,55 @@ import Slider from "./components/Slider";
 import Categories from "./components/Categories";
 import PopularProducts from "./components/PopularProducts";
 
-
 const App = () => {
-  const [user, setUser] = useState(false);
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState({});
   const [order, setOrder] = useState({});
   const [errorMessage, setErrorMessage] = useState("");
-  const [cartCount, setCartCount] = useState({});
+  const [loginEmail, setLoginEmail] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
+  const [user, setUser] = useState({});
+  const [registerEmail, setRegisterEmail] = useState("");
+  const [registerPassword, setRegisterPassword] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+  onAuthStateChanged(auth, (currentUser) => {
+    setUser(currentUser);
+  });
+  const loginHandler = async (event) => {
+    event.preventDefault();
+    setIsLoggedIn(true)
+    try {
+      const user = await signInWithEmailAndPassword(
+        auth,
+        loginEmail,
+        loginPassword
+      );
+      console.log(auth.currentUser.email);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+  const registerHandler = async () => {
+    try {
+      const user = await createUserWithEmailAndPassword(
+        auth,
+        registerEmail,
+        registerPassword
+      ); setIsLoggedIn(true)
+      
+        console.log({ registerEmail });
+      
+      console.log(user);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+  const logoutHandler = async () => {
+    await signOut(auth);
+    setIsLoggedIn(false)
+  };
+  console.log(user);
 
   const fetchProducts = async () => {
     const { data } = await commerce.products.list();
@@ -90,16 +137,27 @@ const App = () => {
   return (
     <>
       <Router>
-        <Navbar cart={cart} />
+        <Navbar cart={cart} user={user} logoutHandler={logoutHandler} isLoggedIn={isLoggedIn}/>
         <Switch>
           <Route path="/" exact>
             <Slider />
+            <Products products={products} onAddToCart={handleAddToCart} />
             <Categories />
             <PopularProducts />
           </Route>
-          <Route path="/login">{user ? <Redirect to="/" /> : <Login />}</Route>
+          <Route path="/login">
+            <Login
+              setLoginEmail={setLoginEmail}
+              setLoginPassword={setLoginPassword}
+              loginHandler={loginHandler}
+            />
+          </Route>
           <Route path="/register">
-            <Register />
+            <Register
+              registerHandler={registerHandler}
+              setRegisterEmail={setRegisterEmail}
+              setRegisterPassword={setRegisterPassword}
+            />
           </Route>
           <Route path="/products">
             <Products products={products} onAddToCart={handleAddToCart} />

@@ -65,7 +65,7 @@ const Link = styled.a`
   text-decoration: underline;
   cursor: pointer;
 `;
-const Login = () => {
+const Login = ({setLoginEmail, setLoginPassword, loginHandler}) => {
   return (
     <>
     
@@ -74,10 +74,10 @@ const Login = () => {
       <Wrapper>
         <Title>SIGN IN</Title>
         <Form>
-          <Input placeholder="Username" />
-          <Input placeholder="Password" />
+          <Input placeholder="Email" onChange={(event) => setLoginEmail(event.target.value)}/>
+          <Input placeholder="Password" onChange={(event) => setLoginPassword(event.target.value)}/>
 
-          <Button>LOGIN</Button>
+          <Button onClick={loginHandler}>LOGIN</Button>
           <Link>Forgot Password</Link>
           <Link>Create an Account</Link>
         </Form>

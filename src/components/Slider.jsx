@@ -8,10 +8,13 @@ import { mobile } from "../responsive";
 const Container = styled.div`
   width: 100%;
   max-height: 100vh;
+  margin-top: 70px;
   display: flex;
   position: relative;
   overflow-x: hidden;
+  margin-bottom: 30px;
   ${mobile({ display: "none" })}
+  
 `;
 
 const Arrow = styled.div`
@@ -65,6 +68,7 @@ const Image = styled.img`
 
 const Title = styled.div`
   font-size: 70px;
+  color: #338087;
 `;
 
 const Desc = styled.div`
