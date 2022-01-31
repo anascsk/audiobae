@@ -75,7 +75,7 @@ const App = () => {
     await signOut(auth);
     setIsLoggedIn(false)
   };
-  console.log(user);
+  
 
   const fetchProducts = async () => {
     const { data } = await commerce.products.list();
