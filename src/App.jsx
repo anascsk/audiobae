@@ -1,6 +1,13 @@
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Cart from "./components/Cart/Cart";
+import Slider from "./components/Slider";
+import Categories from "./components/Categories";
+import PopularProducts from "./components/PopularProducts";
+import Navbar from "./components/Navbar";
+import Checkout from "./components/Cart/Checkout"
+import Products from "./components/Products";
+import Footer from "./components/Footer";
 import {
   signInWithEmailAndPassword,
   signOut,
@@ -12,20 +19,11 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
-  Redirect,
 } from "react-router-dom";
-import Products from "./components/Products";
-import Footer from "./components/Footer";
-
 import { useState, useEffect } from "react";
-import Navbar from "./components/Navbar";
-import Checkout from "./components/Cart/Checkout";
-import { mobile } from "./responsive";
 import { commerce } from "./lib/commerce";
 
-import Slider from "./components/Slider";
-import Categories from "./components/Categories";
-import PopularProducts from "./components/PopularProducts";
+
 
 const App = () => {
   const [products, setProducts] = useState([]);
@@ -37,20 +35,22 @@ const App = () => {
   const [user, setUser] = useState({});
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("isLoggedIn"))
 
   onAuthStateChanged(auth, (currentUser) => {
     setUser(currentUser);
   });
   const loginHandler = async (event) => {
     event.preventDefault();
-    setIsLoggedIn(true)
+    
     try {
       const user = await signInWithEmailAndPassword(
         auth,
         loginEmail,
         loginPassword
       );
+      setIsLoggedIn(true)
+      localStorage.setItem("isLoggedIn",true)
       console.log(auth.currentUser.email);
     } catch (error) {
       console.log(error.message);
@@ -62,8 +62,9 @@ const App = () => {
         auth,
         registerEmail,
         registerPassword
-      ); setIsLoggedIn(true)
-      
+      ); 
+      setIsLoggedIn(true)
+      localStorage.setItem("isLoggedIn", true)
         console.log({ registerEmail });
       
       console.log(user);
@@ -74,6 +75,7 @@ const App = () => {
   const logoutHandler = async () => {
     await signOut(auth);
     setIsLoggedIn(false)
+    localStorage.clear();
   };
   
 

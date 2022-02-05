@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Navbar from "../components/Navbar";
 import { mobile } from "../responsive";
 
 const Container = styled.div`

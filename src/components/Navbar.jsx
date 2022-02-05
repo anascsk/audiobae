@@ -124,8 +124,8 @@ const Navbar = ({ cart, user, logoutHandler, isLoggedIn }) => {
           <Language style={{ marginLeft: "5px", marginTop: "3px" }}>
             <TranslateOutlined />
           </Language>
+          {console.log(isLoggedIn)}
           { isLoggedIn ?
-          
           ( <><MenuItem>{user?.email}</MenuItem>
           <MenuItem onClick={logoutHandler}>Logout</MenuItem></>
           ) : (
