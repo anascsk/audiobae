@@ -4,15 +4,14 @@ import {
   ShoppingCartOutlined,
   TranslateOutlined,
 } from "@material-ui/icons";
-import React from "react";
+import { useContext } from "react";
 import styled from "styled-components";
 import { mobile } from "../responsive";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
+import { ProductContext } from "../context/ProductContext";
 
-
-const Parent = styled.div`
-
-`
+const Parent = styled.div``;
 const Container = styled.div`
   height: 70px;
   background-color: #b6e7f0;
@@ -28,7 +27,6 @@ const Logo = styled.h4`
   color: black;
   margin-left: 20px;
   ${mobile({ fontSize: "30px" })}
- 
 `;
 const Wrapper = styled.div`
   padding: 10px 0px;
@@ -36,7 +34,6 @@ const Wrapper = styled.div`
   justify-content: space-between;
   max-width: 98.75vw;
   ${mobile({ padding: "10px 0px" })}
-  
 `;
 
 const Left = styled.div`
@@ -61,7 +58,6 @@ const Language = styled.span`
   ${mobile({ display: "none" })}
 `;
 const SearchContainer = styled.div`
-  
   flex: 1;
   display: flex;
   align-items: center;
@@ -70,7 +66,7 @@ const SearchContainer = styled.div`
   padding: 5 px;
   border-radius: 5px;
   cursor: pointer;
- 
+
   ${mobile({ display: "none" })}
   &:focus {
   }
@@ -101,54 +97,58 @@ const MenuItem = styled.div`
   cursor: pointer;
   justify-content: space-between;
   ${mobile({ fontSize: "13px", marginLeft: "10px" })}
-  
 `;
 
-
-const Navbar = ({ cart, user, logoutHandler, isLoggedIn }) => {
+const Navbar = () => {
+  const { user, logoutHandler, isLoggedIn } = useContext(AuthContext);
+  const { cart } = useContext(ProductContext);
   return (
     <Parent>
-    <Container>
-      <Wrapper>
-        <Left>
-          <Link to={"/"}>
-            <Logo>audiobae</Logo>
-          </Link>
-        </Left>
-        <SearchContainer style={{ color: "gray", fontSize: 14 }}>
-          <Input placeholder="Search for products, brands and more" />
-          <Search style={{ fontSize: "30px" }}/>
-        </SearchContainer>
-
-        <Right>
-          <Language style={{ marginLeft: "5px", marginTop: "3px" }}>
-            <TranslateOutlined />
-          </Language>
-          {console.log(isLoggedIn)}
-          { isLoggedIn ?
-          ( <><MenuItem>{user?.email}</MenuItem>
-          <MenuItem onClick={logoutHandler}>Logout</MenuItem></>
-          ) : (
-          <><Link to={"/register"} style={{ textDecoration: "none" }}>
-            <MenuItem>Register </MenuItem>
-          </Link>
-          <Link to={"/login"} style={{ textDecoration: "none" }}>
-            <MenuItem>Login</MenuItem>
-          </Link> </>)
-}
-
-          
-          {console.log(user)}
-          <MenuItem>
-            <Link to={"/cart"}>
-              <Badge badgeContent={cart.total_items} color="primary">
-                <MenuItem><ShoppingCartOutlined /></MenuItem>
-              </Badge>
+      <Container>
+        <Wrapper>
+          <Left>
+            <Link to={"/"}>
+              <Logo>audiobae</Logo>
             </Link>
-          </MenuItem>
-        </Right>
-      </Wrapper>
-    </Container>
+          </Left>
+          <SearchContainer style={{ color: "gray", fontSize: 14 }}>
+            <Input placeholder="Search for products, brands and more" />
+            <Search style={{ fontSize: "30px" }} />
+          </SearchContainer>
+
+          <Right>
+            <Language style={{ marginLeft: "5px", marginTop: "3px" }}>
+              <TranslateOutlined />
+            </Language>
+            {console.log(isLoggedIn)}
+            {isLoggedIn ? (
+              <>
+                <MenuItem>{user?.email}</MenuItem>
+                <MenuItem onClick={logoutHandler}>Logout</MenuItem>
+              </>
+            ) : (
+              <>
+                <Link to={"/register"} style={{ textDecoration: "none" }}>
+                  <MenuItem>Register </MenuItem>
+                </Link>
+                <Link to={"/login"} style={{ textDecoration: "none" }}>
+                  <MenuItem>Login</MenuItem>
+                </Link>
+              </>
+            )}
+            <MenuItem>
+              <Link to={"/cart"}>
+                <Badge badgeContent={cart.total_items} color="primary">
+                  {console.log(cart)}
+                  <MenuItem>
+                    <ShoppingCartOutlined />
+                  </MenuItem>
+                </Badge>
+              </Link>
+            </MenuItem>
+          </Right>
+        </Wrapper>
+      </Container>
     </Parent>
   );
 };

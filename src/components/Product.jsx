@@ -1,13 +1,8 @@
-import { Add, Remove } from "@material-ui/icons";
-import {
-  Card,
-  CardContent,
-  CardActions,
-  Typography,
-  Button,
-} from "@material-ui/core";
+import { Typography, Button } from "@material-ui/core";
 import { AddShoppingCartOutlined } from "@material-ui/icons";
+import { useContext } from "react";
 import styled from "styled-components";
+import { ProductContext } from "../context/ProductContext";
 
 import { mobile } from "../responsive";
 
@@ -48,11 +43,11 @@ const IconButton = styled.div`
   cursor: pointer;
   display: flex;
   margin: auto;
-  
 `;
 
-const Product = ({ product, onAddToCart }) => {
-  const handleAddToCart = () => onAddToCart(product.id, 1);
+const Product = ({ product }) => {
+  const { handleAddToCart } = useContext(ProductContext);
+  const onAddToCart = () => handleAddToCart(product.id, 1);
 
   return (
     <Container>
@@ -84,12 +79,12 @@ const Product = ({ product, onAddToCart }) => {
       />
 
       <>
-        <IconContainer aria-label="Add to Cart" onClick={handleAddToCart}>
+        <IconContainer aria-label="Add to Cart" onClick={onAddToCart}>
           <IconButton>
             <Button
               style={{
                 backgroundColor: "#91e0ef",
-                color: "black"
+                color: "black",
               }}
               variant="contained"
               color="primary"
